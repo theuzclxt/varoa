@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .container {
+    max-width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .text {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+  }
+  #yesButton {
+    background-color: green;
+    color: white;
+  }
+  #noButton {
+    background-color: red;
+    color: white;
+  }
+  #message {
+    display: none;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  #image {
+    display: none;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+</style>
+<title>Pedido Especial</title>
+</head>
+<body>
+  <div class="container">
+    <p class="text">Aceitas, ser minha varoa?</p>
+    <button id="yesButton" class="button">Sim</button>
+    <button id="noButton" class="button">Não</button>
+    <p id="message">Nunca passei pra essa parte, e agora?</p>
+    <img id="image" src="anel.jpg" alt="Imagem" />
+  </div>
+
+  <script>
+    const noButton = document.getElementById("noButton");
+    const yesButton = document.getElementById("yesButton");
+    const message = document.getElementById("message");
+    const image = document.getElementById("image");
+
+    function getRandomPosition() {
+      const windowHeight = window.innerHeight - 50;
+      const windowWidth = window.innerWidth - 50;
+      const randomY = Math.floor(Math.random() * windowHeight);
+      const randomX = Math.floor(Math.random() * windowWidth);
+      return { top: randomY, left: randomX };
+    }
+
+    noButton.addEventListener("mouseover", () => {
+      const newPosition = getRandomPosition();
+      noButton.style.top = newPosition.top + "px";
+      noButton.style.left = newPosition.left + "px";
+    });
+
+    yesButton.addEventListener("click", () => {
+      message.style.display = "block";
+      image.style.display = "block";
+    });
+  </script>
+</body>
+</html>
